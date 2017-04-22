@@ -1,7 +1,7 @@
-package com.talavi.mapper;
+package com.talavi.model.service.mapper;
 
-import com.talavi.domain.Project;
-import com.talavi.dto.ProjectDTO;
+import com.talavi.model.domain.Project;
+import com.talavi.model.dto.ProjectDTO;
 import org.mapstruct.Mapper;
 import org.springframework.stereotype.Component;
 

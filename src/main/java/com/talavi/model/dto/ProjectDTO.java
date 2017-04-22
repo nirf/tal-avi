@@ -1,40 +1,32 @@
-package com.talavi.domain;
+package com.talavi.model.dto;
 
-import lombok.Data;
+import org.springframework.hateoas.ResourceSupport;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
 import java.util.Date;
 
 /**
  * Created by home on 4/20/17.
  */
 //@Data
-@Entity
-@Table(name = "project")
-public class Project {
-
-    @Id
-    @GeneratedValue
-    private Long projectId;
+public class ProjectDTO extends ResourceSupport {
 
     private String name;
 
     private Date startdate;
 
+    private Date updatedate;
+
     private String description;
 
-    public Project() {
+    public ProjectDTO() {
     }
 
-    public Long getProjectId() {
-        return projectId;
+    public Date getUpdatedate() {
+        return updatedate;
     }
 
-    public void setProjectId(Long projectId) {
-        this.projectId = projectId;
+    public void setUpdatedate(Date updatedate) {
+        this.updatedate = updatedate;
     }
 
     public String getName() {

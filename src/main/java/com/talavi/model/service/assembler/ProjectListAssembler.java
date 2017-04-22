@@ -1,9 +1,9 @@
-package com.talavi.assembler;
+package com.talavi.model.service.assembler;
 
 import com.talavi.controller.ProjectController;
-import com.talavi.domain.list.ProjectList;
-import com.talavi.dto.ProjectDTO;
-import com.talavi.dto.list.ProjectListDTO;
+import com.talavi.model.domain.list.ProjectList;
+import com.talavi.model.dto.ProjectDTO;
+import com.talavi.model.dto.list.ProjectListDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.mvc.ResourceAssemblerSupport;
 import org.springframework.stereotype.Component;

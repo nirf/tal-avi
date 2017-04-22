@@ -1,6 +1,6 @@
-package com.talavi.dto.list;
+package com.talavi.model.dto.list;
 
-import com.talavi.dto.ProjectDTO;
+import com.talavi.model.dto.ProjectDTO;
 import org.springframework.hateoas.ResourceSupport;
 
 import java.util.List;

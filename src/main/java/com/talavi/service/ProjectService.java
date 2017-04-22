@@ -1,10 +1,8 @@
 package com.talavi.service;
 
-import com.talavi.domain.Project;
-import com.talavi.domain.list.ProjectList;
+import com.talavi.model.domain.Project;
+import com.talavi.model.domain.list.ProjectList;
 import org.springframework.data.domain.Pageable;
-
-import java.util.List;
 
 /**
  * Created by home on 4/20/17.

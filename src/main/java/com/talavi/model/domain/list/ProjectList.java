@@ -1,6 +1,6 @@
-package com.talavi.domain.list;
+package com.talavi.model.domain.list;
 
-import com.talavi.domain.Project;
+import com.talavi.model.domain.Project;
 
 import java.util.List;
 
