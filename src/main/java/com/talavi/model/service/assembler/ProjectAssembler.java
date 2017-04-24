@@ -1,6 +1,7 @@
 package com.talavi.model.service.assembler;
 
 import com.talavi.controller.ProjectController;
+import com.talavi.controller.SheetController;
 import com.talavi.model.domain.Project;
 import com.talavi.model.dto.ProjectDTO;
 import com.talavi.model.service.mapper.ProjectMapper;
@@ -27,6 +28,7 @@ public class ProjectAssembler extends ResourceAssemblerSupport<Project, ProjectD
     public ProjectDTO toResource(Project project) {
         ProjectDTO projectDTO = projectMapper.projectToProjectDTO(project);
         projectDTO.add(linkTo(methodOn(ProjectController.class).readProject(project.getProjectId())).withSelfRel());
+        projectDTO.add(linkTo(methodOn(SheetController.class).getAllSheets(null, project.getProjectId())).withRel("sheets"));
         return projectDTO;
     }
 

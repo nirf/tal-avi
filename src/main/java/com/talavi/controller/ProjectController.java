@@ -15,6 +15,7 @@ import com.talavi.service.exception.ProjectExistsException;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -24,7 +25,7 @@ import org.springframework.web.bind.annotation.*;
  * Created by home on 4/20/17.
  */
 @RestController
-@RequestMapping("/project")
+@RequestMapping("/api")
 public class ProjectController {
     private ProjectService projectService;
     private ProjectAssembler projectAssembler;
@@ -37,7 +38,7 @@ public class ProjectController {
         this.projectListAssembler = projectListAssembler;
     }
 
-    @PostMapping(value = "/create")
+    @PostMapping(value = "/project")
     public ResponseEntity<ProjectDTO> createProject(@RequestBody ProjectDTO projectDTO, @AuthenticationPrincipal JwtUser user) {
         try {
             Project project = projectAssembler.getProjectMapper().projectDTOToProject(projectDTO);
@@ -49,7 +50,7 @@ public class ProjectController {
         }
     }
 
-    @GetMapping(value = "read/{projectId}")
+    @GetMapping(value = "/project/{projectId}")
     public ResponseEntity<ProjectDTO> readProject(@PathVariable Long projectId) {
         try {
             Project projectFound = projectService.read(projectId);
@@ -60,7 +61,7 @@ public class ProjectController {
 
     }
 
-    @PutMapping(value = "update/{projectId}")
+    @PutMapping(value = "/project/{projectId}")
     public ResponseEntity<ProjectDTO> updateProject(@PathVariable Long projectId, @RequestBody ProjectDTO projectDTO) {
         try {
             Project project = projectAssembler.getProjectMapper().projectDTOToProject(projectDTO);
@@ -71,7 +72,7 @@ public class ProjectController {
         }
     }
 
-    @DeleteMapping(value = "delete/{projectId}")
+    @DeleteMapping(value = "/project/{projectId}")
     public ResponseEntity<ProjectDTO> deleteProject(@PathVariable Long projectId) {
         try {
             Project projectToDelete = projectService.delete(projectId);
@@ -81,14 +82,14 @@ public class ProjectController {
         }
     }
 
-    @GetMapping("/getAll")
-    public ResponseEntity<ProjectListDTO> getAllProjects(@ApiParam Pageable pageable) {
+    @GetMapping("/project")
+    public ResponseEntity<ProjectListDTO> getAllProjects(@ApiParam @PageableDefault Pageable pageable) {
         ProjectList projectList = projectService.getAll(pageable);
         return new ResponseEntity<>(projectListAssembler.toResource(projectList), HttpStatus.OK);
     }
 
 
-    @GetMapping(value = "search")
+    @GetMapping(value = "/_search/project")
     public ResponseEntity<ProjectListDTO> searchProjectByName(@RequestParam(value = "name") String name) {
         ProjectList projectList = projectService.search(name);
         return new ResponseEntity<>(projectListAssembler.toResource(projectList), HttpStatus.OK);

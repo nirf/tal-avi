@@ -7,7 +7,6 @@ import java.util.Date;
 /**
  * Created by home on 4/20/17.
  */
-//@Data
 public class ProjectDTO extends ResourceSupport {
 
     private String name;
